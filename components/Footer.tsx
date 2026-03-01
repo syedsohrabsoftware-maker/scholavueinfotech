@@ -40,17 +40,45 @@ export default function Footer() {
         </div>
         
         {/* Animated Graph Line SVG (SaaS Growth Vibe) */}
-        <svg className="absolute bottom-0 left-0 w-full h-80 overflow-visible opacity-50">
-          <motion.path
-            d="M0,150 Q200,80 400,180 T800,100 T1200,220 T1600,120"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 4, ease: "easeInOut" }}
-          />
-        </svg>
+        <svg className="absolute bottom-0 left-0 w-full h-96 overflow-visible opacity-60">
+
+  {/* Main Growth Line */}
+  <motion.path
+    d="M0,180 Q250,100 500,200 T900,120 T1400,220 T1800,90"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    initial={{ pathLength: 0, opacity: 0 }}
+    whileInView={{ pathLength: 1, opacity: 1 }}
+    transition={{ duration: 4, ease: "easeInOut" }}
+  />
+
+  {/* Secondary Line */}
+  <motion.path
+    d="M0,220 Q300,180 600,240 T1000,200 T1600,260"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    initial={{ pathLength: 0, opacity: 0 }}
+    whileInView={{ pathLength: 1, opacity: 0.5 }}
+    transition={{ duration: 5, ease: "easeInOut" }}
+  />
+
+  {/* Dots on Main Graph */}
+  {[200, 500, 900, 1400].map((x, i) => (
+    <motion.circle
+      key={i}
+      cx={x}
+      cy={i % 2 === 0 ? 120 : 200}
+      r="4"
+      fill="currentColor"
+      initial={{ scale: 0 }}
+      whileInView={{ scale: 1 }}
+      transition={{ delay: i * 0.3 }}
+    />
+  ))}
+
+</svg>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -59,7 +87,7 @@ export default function Footer() {
           {/* Brand Identity - Slim but Sharp Weight */}
           <div className="md:col-span-4">
             <Logo />
-            <p className="mt-8 text-[14px] text-[var(--text-soft)] font-light tracking-wide leading-relaxed max-w-sm">
+            <p className="mt-8 text-[14px] text-[var(--text-soft)] font-normal tracking-wide leading-relaxed max-w-sm">
               Engineering next-generation digital ecosystems through precision architecture and clean aesthetics.
             </p>
             
@@ -87,7 +115,7 @@ export default function Footer() {
                 <ul className="space-y-5">
                   {links.map(link => (
                     <li key={link.name}>
-                      <a href={link.href} className="text-[13px] font-light tracking-wide text-[var(--text-soft)] hover:text-brand-accent transition-all flex items-center gap-1 group">
+                      <a href={link.href} className="text-[13px] font-normal tracking-wide text-[var(--text-soft)] hover:text-brand-accent transition-all flex items-center gap-1 group">
                         {link.name}
                         <ArrowUpRight size={11} className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
                       </a>
@@ -104,13 +132,13 @@ export default function Footer() {
             <div className="space-y-8">
               <div className="flex items-start gap-4">
                 <MapPin size={15} strokeWidth={1.2} className="text-brand-accent mt-1" />
-                <p className="text-[12px] font-light text-[var(--text-soft)] tracking-wider leading-relaxed">
+                <p className="text-[12px] font-normal text-[var(--text-soft)] tracking-wider leading-relaxed">
                   GURUGRAM<br />HARYANA, INDIA.
                 </p>
               </div>
               <div className="flex items-center gap-4">
                 <Mail size={15} strokeWidth={1.2} className="text-brand-accent" />
-                <p className="text-[12px] font-light text-[var(--text-soft)] tracking-wider lowercase hover:text-brand-accent transition-colors">
+                <p className="text-[12px] font-normal text-[var(--text-soft)] tracking-wider lowercase hover:text-brand-accent transition-colors">
                   hello@scholavue.com
                 </p>
               </div>

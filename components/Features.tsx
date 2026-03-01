@@ -1,90 +1,93 @@
 "use client";
 import { motion } from "framer-motion";
-import { CheckCircle2, Zap, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { Plus, ArrowRight, Code2, Cpu, Globe, Layers, Sparkles } from "lucide-react";
 
-export default function Features() {
-  const features = [
-    { 
-      title: "Smart Attendance", 
-      desc: "Real-time automated tracking system for modern institutions.",
-      icon: <CheckCircle2 size={20} />,
-      tag: "Automated"
-    },
-    { 
-      title: "Fee Management", 
-      desc: "Architecting secure digital payment gateways and invoicing.",
-      icon: <ShieldCheck size={20} />,
-      tag: "Secure"
-    },
-    { 
-      title: "SEO Optimized", 
-      desc: "Advanced search algorithms to dominate digital rankings.",
-      icon: <Zap size={20} />,
-      tag: "High-Rank"
-    },
+export default function ExperienceMatrix() {
+  const capabilities = [
+    { title: "Bespoke Systems", id: "01", icon: <Code2 strokeWidth={1} />, desc: "Proprietary architectures for complex logic." },
+    { title: "Cloud Scale", id: "02", icon: <Cpu strokeWidth={1} />, desc: "High-concurrency infrastructure engineering." },
+    { title: "Next-Gen Web", id: "03", icon: <Globe strokeWidth={1} />, desc: "Sub-second LCP with Next.js 15." },
+    { title: "Native Mobile", id: "04", icon: <Layers strokeWidth={1} />, desc: "Hardware-accelerated mobile journeys." },
   ];
 
   return (
-    <section className="py-32 bg-[var(--bg-main)] transition-colors duration-500 relative">
-      {/* Background Subtle Gradient Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(139,92,246,0.03),transparent_50%)] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+    <section className="py-6 bg-[var(--bg-main)] relative overflow-hidden font-sans">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Modern SaaS Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-          <div className="max-w-xl">
-            <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-brand-accent text-[10px] font-black uppercase tracking-[0.5em] mb-4 block"
-            >
-              System Capabilities
-            </motion.span>
-            <h2 className="text-5xl md:text-6xl font-[1000] uppercase tracking-tighter text-[var(--text-main)] leading-[0.9]">
-              Core <span className="opacity-20 italic">Features.</span>
+        {/* Abstract Floating Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
+          <div className="space-y-8">
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="flex items-center gap-2">
+              <Sparkles size={10} className="text-brand-accent opacity-50" />
+              <span className="text-brand-accent text-[9px] font-semibold uppercase tracking-[0.5em]">Creative Engineering</span>
+            </motion.div>
+            <h2 className="text-6xl md:text-9xl font-normal tracking-tighter text-[var(--text-main)] leading-[0.8]">
+              Elite <br />
+              <span className="opacity-15 italic font-light">Solutions.</span>
             </h2>
           </div>
-          <p className="text-[13px] text-[var(--text-soft)] max-w-[300px] leading-relaxed font-medium border-l border-[var(--border-color)] pl-6">
-            Engineering excellence through next-gen software architecture and clean UX.
-          </p>
+          <div className="lg:pt-24 space-y-6 border-l border-brand-accent/20 pl-10">
+            <p className="text-[13px] leading-relaxed text-[var(--text-soft)] opacity-40 font-normal max-w-[280px]">
+              We transcend standard development by engineering high-performance digital ecosystems.
+            </p>
+            <div className="flex gap-4">
+               <div className="h-[1px] w-12 bg-brand-accent/40 mt-3" />
+               <span className="text-[10px] uppercase tracking-widest text-brand-accent font-bold italic">Available 2026</span>
+            </div>
+          </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((f, i) => (
-            <motion.div 
-              key={f.title}
-              initial={{ opacity: 0, y: 30 }}
+        {/* The Matrix Cards - Staggered Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-16 md:gap-y-32">
+          {capabilities.map((cap, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.1, duration: 1 }}
               viewport={{ once: true }}
-              className="group relative p-10 rounded-[32px] border border-[var(--border-color)] bg-[var(--bg-card)]/50 backdrop-blur-sm hover:border-brand-accent/50 transition-all duration-500 cursor-pointer shadow-sm hover:shadow-2xl hover:shadow-brand-accent/5 hover:-translate-y-2"
+              className={`group relative ${i % 2 !== 0 ? "md:mt-32" : ""}`}
             >
-              {/* Floating Tag */}
-              <div className="absolute top-8 right-8 text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded-md border border-[var(--border-color)] group-hover:border-brand-accent/30 group-hover:text-brand-accent transition-colors">
-                {f.tag}
+              {/* Floating ID Mark */}
+              <div className="flex items-center gap-4 mb-6">
+                 <span className="text-[10px] font-medium text-brand-accent/40 group-hover:text-brand-accent transition-colors">ID — {cap.id}</span>
+                 <div className="h-[1px] w-0 group-hover:w-12 bg-brand-accent/40 transition-all duration-700" />
               </div>
 
-              {/* Icon Glass Container */}
-              <div className="w-14 h-14 rounded-2xl bg-brand-accent/5 flex items-center justify-center text-brand-accent mb-8 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500 shadow-inner">
-                {f.icon}
+              {/* Minimal Card Glass */}
+              <div className="relative p-10 rounded-[48px] border border-[var(--border-color)] bg-[var(--bg-card)]/20 backdrop-blur-xl overflow-hidden hover:border-brand-accent/40 transition-all duration-700 group-hover:-translate-y-2">
+                <div className="mb-12 flex justify-between items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-accent/5 border border-brand-accent/10 flex items-center justify-center text-brand-accent group-hover:scale-110 transition-transform duration-500">
+                    {cap.icon}
+                  </div>
+                  <Plus size={14} strokeWidth={1} className="text-[var(--text-soft)] opacity-20 group-hover:rotate-90 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-3xl md:text-5xl font-normal tracking-tight text-[var(--text-main)] leading-none">
+                    {cap.title}
+                  </h3>
+                  <p className="text-[14px] text-[var(--text-soft)] leading-relaxed font-normal opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                    {cap.desc}
+                  </p>
+                </div>
+
+                <div className="mt-12 flex items-center gap-3 text-brand-accent opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                   <span className="text-[10px] font-bold uppercase tracking-widest">Inquire</span>
+                   <ArrowRight size={14} strokeWidth={1.5} />
+                </div>
+
+                {/* Aesthetic Bottom Glow */}
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-brand-accent/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               </div>
-
-              <h3 className="text-[18px] font-black uppercase tracking-tight text-[var(--text-main)] flex items-center gap-2">
-                {f.title}
-                <ArrowUpRight size={14} className="opacity-0 -translate-y-1 group-hover:opacity-40 group-hover:translate-y-0 transition-all" />
-              </h3>
-              
-              <p className="text-[13px] text-[var(--text-soft)] mt-4 leading-relaxed font-medium group-hover:text-[var(--text-main)] transition-colors">
-                {f.desc}
-              </p>
-
-              {/* Advanced Decorative Grid Overlay */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] pointer-events-none bg-cubic-grid transition-opacity duration-700" />
             </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* Kinetic Background Watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30vw] font-black text-[var(--text-main)] opacity-[0.01] pointer-events-none select-none tracking-tighter">
+        MATRIX
       </div>
     </section>
   );
